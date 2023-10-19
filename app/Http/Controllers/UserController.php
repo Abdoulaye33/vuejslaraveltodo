@@ -36,4 +36,24 @@ class UserController extends Controller
 
         return redirect('/users')->with('success', 'Utilisateur ajouté avec succès.');
     }
+
+
+    public function edit($id)
+    {
+        $user = User::find($id);
+        return view('users.edit', compact('user'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        // Validez les données du formulaire ici (voir ci-dessous)
+
+        $user = User::find($id);
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->password = bcrypt($request->input('password'));
+        $user->save();
+
+        return redirect('/users')->with('success', 'Utilisateur mis à jour avec succès.');
+    }
 }
