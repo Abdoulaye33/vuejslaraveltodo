@@ -7,7 +7,7 @@
 </head>
 <body>
     <header>
-        <!-- Barre de navigation, en-tête de page, etc. -->
+        <!-- Barre de navigation, en-tête de page, etc.. -->
     </header>
 
     <main>
