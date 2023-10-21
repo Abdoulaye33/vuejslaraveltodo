@@ -1,7 +1,5 @@
-import Vue from 'vue';
+import {createApp} from 'vue'
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+import App from './components/App.vue'
 
-const app = new Vue({
-    el: '#app',
-});
+createApp(App).mount("#app")
