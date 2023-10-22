@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Task extends Model
 {
     protected $table = 'tasks';
-    protected $fillable = ['id', 'name', 'description'];
+    protected $fillable = ['id', 'name', 'completed'];
 }
