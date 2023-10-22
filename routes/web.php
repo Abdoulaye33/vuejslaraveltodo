@@ -16,8 +16,8 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('welcome');
-});
-
+})
+->name('application');
 
 
 Route::get('/users', [UserController::class, 'index']);
