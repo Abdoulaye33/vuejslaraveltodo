@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
     data() {
         return {
@@ -23,18 +24,19 @@ export default {
         };
     },
     mounted() {
-        // Effectuer une requête GET vers la route API pour obtenir les tâches
-        axios.get('/api/tasks')
-            .then(response => {
-                this.tasks = response.data.tasks;
-            })
-            .catch(error => {
-                console.error(error);
-            });
+        this.fetchTasks();
     },
     methods: {
+        fetchTasks() {
+            axios.get('/api/tasks')
+                .then(response => {
+                    this.tasks = response.data.tasks;
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        },
         addTask() {
-            // Effectuer une requête POST vers la route API pour créer une nouvelle tâche
             axios.post('/api/tasks', this.newTask)
                 .then(response => {
                     this.tasks.push(response.data.task);
@@ -45,7 +47,6 @@ export default {
                 });
         },
         toggleTaskStatus(task) {
-            // Effectuer une requête PUT vers la route API pour mettre à jour le statut de la tâche
             axios.put(`/api/tasks/${task.id}`, { completed: !task.completed })
                 .then(response => {
                     task.completed = response.data.task.completed;

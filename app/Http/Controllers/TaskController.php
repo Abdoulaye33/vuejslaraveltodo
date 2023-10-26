@@ -21,8 +21,12 @@ class TaskController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+        ]);
+
         $task = Task::create($request->all());
-        return response()->json(['task' => $task]);
+        return response()->json(['task' => $task], 201);
     }
 
     public function update(Request $request, Task $task)
@@ -30,6 +34,4 @@ class TaskController extends Controller
         $task->update(['completed' => $request->completed]);
         return response()->json(['task' => $task]);
     }
-
-    // Implémentez d'autres méthodes comme update et destroy
 }

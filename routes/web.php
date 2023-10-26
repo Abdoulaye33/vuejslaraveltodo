@@ -19,11 +19,6 @@ Route::get('/', function () {
 })
 ->name('application');
 
-Route::get('/', [TaskController::class, 'index'])->name('application');
-
-Route::put('/tasks/{task}', [TaskController::class, 'update']);
-Route::delete('/tasks/{task}', [TaskController::class, 'destroy']);
-
 
 //CRUD just for users and feels to pratices it
 Route::get('/users', [UserController::class, 'index']);
